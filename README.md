@@ -1,2 +1,3 @@
-# cmake-linter-cmake
-Run cmakelint and polysquare-cmake-linter as part of a CMake build process
+# style-linter-cmake
+
+Provides markdown and style guide linting as a CMake build step
