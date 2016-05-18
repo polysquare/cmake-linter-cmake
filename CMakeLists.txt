@@ -36,7 +36,7 @@ set (CMAKE_FILES
      "${_CUR_LIST_DIR}/FindCMAKELINT.cmake"
      "${_CUR_LIST_DIR}/CMakeLists.txt")
 set (MARKDOWN_FILES
-     "${CMAKE_CURRENT_LIST_DIR}/LICENSE.md"
+     "${CMAKE_CURRENT_LIST_DIR}/LICENCE.md"
      "${CMAKE_CURRENT_LIST_DIR}/README.md")
 
 cmake_module_add_common_targets (NAMESPACE "cmake_lint"
