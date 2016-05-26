@@ -12,8 +12,7 @@ set (CMAKE_MODULE_PATH
 
 cmake_minimum_required (VERSION 2.8)
 
-include ("cmake/cmake-unit/CMakeUnitRunner")
-include ("cmake/cmake-unit/CMakeUnit")
+include ("cmake/cmake-module-common/Common" OPTIONAL)
 include (CMakeLinter)
 
 if (NOT CMAKE_SCRIPT_MODE_FILE)
@@ -37,17 +36,13 @@ set (CMAKE_FILES
      "${_CUR_LIST_DIR}/FindCMAKELINT.cmake"
      "${_CUR_LIST_DIR}/CMakeLists.txt")
 set (MARKDOWN_FILES
-     "${CMAKE_CURRENT_LIST_DIR}/LICENSE.md"
+     "${CMAKE_CURRENT_LIST_DIR}/LICENCE.md"
      "${CMAKE_CURRENT_LIST_DIR}/README.md")
 
-cmake_unit_init (NAMESPACE cmake_lint
-                 COVERAGE_FILES ${CMAKE_FILES})
+if (COMMAND cmake_module_add_common_targets)
 
-cmake_lint_sources (cmakelint
-                    CMAKELINT_BLACKLIST "whitespace/extra"
-                                        "package/consistency"
-                                        "whitespace/indent"
-                    NAMESPACE cmake_lint
-                    SOURCES ${CMAKE_FILES})
+    cmake_module_add_common_targets (NAMESPACE "cmake_lint"
+                                     CMAKE_FILES ${CMAKE_FILES}
+                                     DOCUMENTATION_FILES ${MARKDOWN_FILES})
 
-add_custom_target (analysis ALL DEPENDS cmakelint)
+endif ()
