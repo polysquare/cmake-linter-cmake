@@ -14,6 +14,8 @@
 
 include ("cmake/tooling-find-pkg-util/ToolingFindPackageUtil")
 
+find_package (PythonInterp)
+
 function (cmake_lint_cmake_linter_cmakelint_find)
 
     if (DEFINED CMAKELINT_FOUND)
@@ -47,7 +49,8 @@ function (cmake_lint_cmake_linter_cmakelint_find)
     psq_check_and_report_tool_version (CMakeLint
                                        "latest"
                                        REQUIRED_VARS
-                                       CMAKELINT_EXECUTABLE)
+                                       CMAKELINT_EXECUTABLE
+                                       PYTHON_EXECUTABLE)
 
 
     set (CMAKELINT_FOUND # NOLINT:style/set_var_case

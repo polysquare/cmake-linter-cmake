@@ -103,7 +103,7 @@ function (_cmake_lint_get_cmakelint_commandline COMMANDLINE_RETURN)
         set (WARN_ONLY_STATE OFF)
     endif ()
 
-    set (COMMANDLINE_OPTIONS "")
+    set (COMMANDLINE_OPTIONS "${CMAKELINT_EXECUTABLE}")
 
     if (COMMANDLINE_FILTER)
         string (REPLACE ";" "," COMMANDLINE_FILTER "${COMMANDLINE_FILTER}")
@@ -124,7 +124,7 @@ function (_cmake_lint_get_cmakelint_commandline COMMANDLINE_RETURN)
          "-DVERBOSE=OFF"
          "-DWARN_ONLY=${WARN_ONLY_STATE}"
          "-DSOURCES_LAST=ON"
-         "-DEXECUTABLE=${CMAKELINT_EXECUTABLE}"
+         "-DEXECUTABLE=${PYTHON_EXECUTABLE}"
          "-DSOURCES=${COMMANDLINE_SOURCES}"
          "-DOPTIONS=${COMMANDLINE_OPTIONS}"
          -P
